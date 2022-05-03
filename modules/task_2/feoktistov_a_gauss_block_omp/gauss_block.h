@@ -1,6 +1,6 @@
 // Copyright 2022 Feoktistov Andrei
-#ifndef MODULES_TASK_2_FEOKTISTOV_A_GAUSS_BLOCK_GAUSS_BLOCK_H_
-#define MODULES_TASK_2_FEOKTISTOV_A_GAUSS_BLOCK_GAUSS_BLOCK_H_
+#ifndef MODULES_TASK_2_FEOKTISTOV_A_GAUSS_BLOCK_OMP_GAUSS_BLOCK_H_
+#define MODULES_TASK_2_FEOKTISTOV_A_GAUSS_BLOCK_OMP_GAUSS_BLOCK_H_
 #include <vector>
 #include <string>
 
@@ -45,4 +45,4 @@ std::vector<Pixel> parallelGauss(const std::vector<Pixel>& img, int width,
                                    int height, const std::vector<float>& kernel,
                                  const int num_threads = 4);
 
-#endif  // MODULES_TASK_2_FEOKTISTOV_A_GAUSS_BLOCK_GAUSS_BLOCK_H_
+#endif  // MODULES_TASK_2_FEOKTISTOV_A_GAUSS_BLOCK_OMP_GAUSS_BLOCK_H_

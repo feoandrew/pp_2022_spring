@@ -1,6 +1,6 @@
 // Copyright 2022 Feoktistov Andrei
 #define _USE_MATH_DEFINES
-#include "../../../modules/task_2/feoktistov_a_gauss_block/gauss_block.h"
+#include "../../../modules/task_2/feoktistov_a_gauss_block_omp/gauss_block.h"
 #include <omp.h>
 #include <math.h>
 #include <vector>
