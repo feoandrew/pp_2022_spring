@@ -12,7 +12,8 @@ struct Equivalents {
       return;
     }
     std::vector<std::vector<int>>::iterator containing = std::find_if(
-        equivalents.begin(), equivalents.end(), [&](std::vector<int> p) {
+        equivalents.begin(), equivalents.end(),
+        [&](std::vector<int> p) {
           return std::find_if(p.begin(), p.end(), [&](int p1) {
                    return p1 == a || p1 == b;
                  }) != p.end();
@@ -51,7 +52,7 @@ struct Equivalents {
     if (containing == equivalents.end()) {
       return a;
     }
-    return *std::min(containing->begin(), containing->end());
+    return *std::min_element(containing->begin(), containing->end());
   }
 };
 

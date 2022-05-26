@@ -38,17 +38,17 @@ TEST(SPARSE_MATRIX_MULT_SEQ, MULT_2) {
     SparseM B(arr1, count, count);
     delete[] arr;
     delete[] arr1;
-     double start_seq = omp_get_wtime();
+    // double start_seq = omp_get_wtime();
     SparseM C = A * B;
-     double end_seq = omp_get_wtime();
-     double seq_time = end_seq - start_seq;
-     double start_omp = omp_get_wtime();
+    // double end_seq = omp_get_wtime();
+    // double seq_time = end_seq - start_seq;
+    // double start_omp = omp_get_wtime();
     SparseM D = Mult_parallel(A, B);
-     double end_omp = omp_get_wtime();
-     double omp_time = end_omp - start_omp;
-     std::cout << "seq time: " << seq_time << "\n";
-     std::cout << "omp time: " << omp_time << "\n";
-     std::cout << "a: " << seq_time / omp_time << "\n";
+    // double end_omp = omp_get_wtime();
+    // double omp_time = end_omp - start_omp;
+    // std::cout << "seq time: " << seq_time << "\n";
+    // std::cout << "omp time: " << omp_time << "\n";
+    // std::cout << "a: " << seq_time / omp_time << "\n";
     ASSERT_EQ(D, C);
 }
 
@@ -60,17 +60,17 @@ TEST(SPARSE_MATRIX_MULT_SEQ, MULT_3) {
     SparseM B(arr1, count, count);
     delete[] arr;
     delete[] arr1;
-     double start_seq = omp_get_wtime();
+    // double start_seq = omp_get_wtime();
     SparseM C = A * B;
-    double end_seq = omp_get_wtime();
-    double seq_time = end_seq - start_seq;
-    double start_omp = omp_get_wtime();
+    // double end_seq = omp_get_wtime();
+    // double seq_time = end_seq - start_seq;
+    // double start_omp = omp_get_wtime();
     SparseM D = Mult_parallel(A, B);
-    double end_omp = omp_get_wtime();
-    double omp_time = end_omp - start_omp;
-    std::cout << "seq time: " << seq_time << "\n";
-    std::cout << "omp time: " << omp_time << "\n";
-    std::cout << "a: " << seq_time / omp_time << "\n";
+    // double end_omp = omp_get_wtime();
+    // double omp_time = end_omp - start_omp;
+    // std::cout << "seq time: " << seq_time << "\n";
+    // std::cout << "omp time: " << omp_time << "\n";
+    // std::cout << "a: " << seq_time / omp_time << "\n";
     ASSERT_EQ(D, C);
 }
 TEST(SPARSE_MATRIX_MULT_SEQ, MULT_4) {
@@ -81,17 +81,17 @@ TEST(SPARSE_MATRIX_MULT_SEQ, MULT_4) {
     SparseM B(arr1, count, count);
     delete[] arr;
     delete[] arr1;
-     double start_seq = omp_get_wtime();
+    // double start_seq = omp_get_wtime();
     SparseM C = A*B;
-     double end_seq = omp_get_wtime();
-     double seq_time = end_seq - start_seq;
-     double start_omp = omp_get_wtime();
+    // double end_seq = omp_get_wtime();
+    // double seq_time = end_seq - start_seq;
+    // double start_omp = omp_get_wtime();
     SparseM D = Mult_parallel(A, B);
-     double end_omp = omp_get_wtime();
-     double omp_time = end_omp - start_omp;
-     std::cout << "seq time: " << seq_time << "\n";
-     std::cout << "omp time: " << omp_time << "\n";
-     std::cout << "a: " << seq_time / omp_time << "\n";
+    // double end_omp = omp_get_wtime();
+    // double omp_time = end_omp - start_omp;
+    // std::cout << "seq time: " << seq_time << "\n";
+    // std::cout << "omp time: " << omp_time << "\n";
+    // std::cout << "a: " << seq_time / omp_time << "\n";
     ASSERT_EQ(D, C);
 }
 

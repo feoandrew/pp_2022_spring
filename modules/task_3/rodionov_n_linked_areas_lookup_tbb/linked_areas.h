@@ -2,19 +2,22 @@
 #ifndef MODULES_TASK_3_RODIONOV_N_LINKED_AREAS_LOOKUP_TBB_LINKED_AREAS_H_
 #define MODULES_TASK_3_RODIONOV_N_LINKED_AREAS_LOOKUP_TBB_LINKED_AREAS_H_
 #include <tbb/tbb.h>
+
 #include <algorithm>
 #include <cstdlib>
+#include <functional>
+#include <map>
+#include <numeric>
+#include <random>
 #include <vector>
+#include <utility>
 
-typedef tbb::queuing_mutex Mutex;
 struct Equivalents {
   std::vector<std::vector<int>> equivalents;
-  Mutex mutex;
   void Add(int a, int b) {
     if (a == b) {
       return;
     }
-    Mutex::scoped_lock lock(mutex);
     {
       std::vector<std::vector<int>>::iterator containing = std::find_if(
           equivalents.begin(), equivalents.end(), [&](std::vector<int> p) {
@@ -49,7 +52,6 @@ struct Equivalents {
         }
       }
     }
-    lock.release();
   }
   int Get(int a) {
     std::vector<std::vector<int>>::iterator containing = std::find_if(
@@ -97,6 +99,35 @@ BinaryImage GenerateBinrayImage(int size);
 
 BinaryImageAreas* FindAreas(BinaryImage image);
 
+BinaryImageAreas* FindSubArea(BinaryImage image, int xStart, int yStart,
+                              int size, int startLabel);
 BinaryImageAreas* FindAreasTBB(BinaryImage image);
+
+struct BlockProcessor {
+  std::map<int, BinaryImageAreas*>* blocks;
+  BinaryImage* image;
+  int onedimblocks;
+  int blockSize;
+  int blockSizeArea;
+  BlockProcessor(BinaryImage* image, std::map<int, BinaryImageAreas*>* blocks,
+                 int onedimblocks, int blockSize, int blockSizeArea) {
+    this->blocks = blocks;
+    this->image = image;
+    this->onedimblocks = onedimblocks;
+    this->blockSize = blockSize;
+    this->blockSizeArea = blockSizeArea;
+  }
+  void operator()(const tbb::blocked_range<int>& r) const {
+    for (tbb::blocked_range<int>::const_iterator block = r.begin();
+         block != r.end(); ++block) {
+      int offsetX = (block / onedimblocks) * image->size / onedimblocks;
+      int offsetY = (block % onedimblocks) * image->size / onedimblocks;
+      int startLabel = block * this->blockSizeArea;
+      auto subarea =
+          FindSubArea(*this->image, offsetX, offsetY, blockSize, startLabel);
+      blocks->insert(std::make_pair(block, subarea));
+    }
+  }
+};
 
 #endif  // MODULES_TASK_3_RODIONOV_N_LINKED_AREAS_LOOKUP_TBB_LINKED_AREAS_H_

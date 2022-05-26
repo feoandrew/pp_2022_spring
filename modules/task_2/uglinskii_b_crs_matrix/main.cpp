@@ -7,9 +7,9 @@
 
 #include "./crs_multiplication.h"
 
-TEST(Multiplication_seq, crs_50x50_30) {
-  MatrixCRS matrix_A = GenerateRandomMatrixCRS(50, 50, 30);
-  MatrixCRS matrix_B = GenerateRandomMatrixCRS(50, 50, 30);
+TEST(Multiplication_seq, crs_5x5_5) {
+  MatrixCRS matrix_A = GenerateRandomMatrixCRS(5, 5, 5);
+  MatrixCRS matrix_B = GenerateRandomMatrixCRS(5, 5, 5);
 
   MatrixCRS matrix_C;
   CRSMultiply(matrix_A, matrix_B, &matrix_C);
@@ -42,11 +42,11 @@ TEST(Multiplication_parallel, 3x3_4) {
   ASSERT_TRUE(CompareMatrixCRS(matrix_C, C_omp));
 }
 
-TEST(Multiplication_parallel, 50x50_30) {
+TEST(Multiplication_parallel, 10x10_7) {
   double t1, t2, t1_, t2_;
 
-  MatrixCRS matrix_A = GenerateRandomMatrixCRS(50, 50, 30);
-  MatrixCRS matrix_B = GenerateRandomMatrixCRS(50, 50, 30);
+  MatrixCRS matrix_A = GenerateRandomMatrixCRS(10, 10, 7);
+  MatrixCRS matrix_B = GenerateRandomMatrixCRS(10, 10, 7);
 
   MatrixCRS matrix_C;
   t1 = omp_get_wtime();
@@ -62,11 +62,11 @@ TEST(Multiplication_parallel, 50x50_30) {
   ASSERT_TRUE(CompareMatrixCRS(matrix_C, C_omp));
 }
 
-TEST(Multiplication_parallel, 200x200_350) {
+TEST(Multiplication_parallel, 15x15_12) {
   double t1, t2, t1_, t2_;
 
-  MatrixCRS matrix_A = GenerateRandomMatrixCRS(200, 200, 350);
-  MatrixCRS matrix_B = GenerateRandomMatrixCRS(200, 200, 350);
+  MatrixCRS matrix_A = GenerateRandomMatrixCRS(15, 15, 12);
+  MatrixCRS matrix_B = GenerateRandomMatrixCRS(15, 15, 12);
 
   MatrixCRS matrix_C;
   t1 = omp_get_wtime();
@@ -82,11 +82,11 @@ TEST(Multiplication_parallel, 200x200_350) {
   ASSERT_TRUE(CompareMatrixCRS(matrix_C, C_omp));
 }
 
-TEST(Multiplication_parallel, 250x250_400) {
+TEST(Multiplication_parallel, 20x20_25) {
   double t1, t2, t1_, t2_;
 
-  MatrixCRS matrix_A = GenerateRandomMatrixCRS(250, 250, 400);
-  MatrixCRS matrix_B = GenerateRandomMatrixCRS(250, 250, 400);
+  MatrixCRS matrix_A = GenerateRandomMatrixCRS(20, 20, 40);
+  MatrixCRS matrix_B = GenerateRandomMatrixCRS(20, 20, 40);
 
   MatrixCRS matrix_C;
   t1 = omp_get_wtime();
@@ -102,11 +102,11 @@ TEST(Multiplication_parallel, 250x250_400) {
   ASSERT_TRUE(CompareMatrixCRS(matrix_C, C_omp));
 }
 
-TEST(Multiplication_parallel, 300x300_1000) {
+TEST(Multiplication_parallel, 25x25_35) {
   double t1, t2, t1_, t2_;
 
-  MatrixCRS matrix_A = GenerateRandomMatrixCRS(300, 300, 1000);
-  MatrixCRS matrix_B = GenerateRandomMatrixCRS(300, 300, 1000);
+  MatrixCRS matrix_A = GenerateRandomMatrixCRS(25, 25, 30);
+  MatrixCRS matrix_B = GenerateRandomMatrixCRS(25, 25, 30);
 
   MatrixCRS matrix_C;
   t1 = omp_get_wtime();

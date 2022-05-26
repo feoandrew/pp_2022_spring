@@ -1,14 +1,16 @@
 // Copyright 2022 Nikita Rodionov
 #include <gtest/gtest.h>
-#include <iostream>
+
 #include <cstdio>
+#include <iostream>
+
 #include "./linked_areas.h"
 
 const int IMAGE_SIZE1 = 5;
 const int IMAGE_SIZE2 = 10;
 const int IMAGE_SIZE3 = 20;
 const int IMAGE_SIZE4 = 30;
-const int IMAGE_SIZE5 = 50;
+const int IMAGE_SIZE5 = 40;
 
 bool CompareAreas(BinaryImageAreas* area1, BinaryImageAreas* area2) {
   if (area1->size != area2->size) {
@@ -30,30 +32,6 @@ TEST(LinkedAreasLookup, EqualityTest1) {
   BinaryImage image = GenerateBinrayImage(IMAGE_SIZE1);
   BinaryImageAreas* areas = FindAreas(image);
   BinaryImageAreas* areasOmp = FindAreasTBB(image);
-  /*
-      for (int x = 0; x < image.size; x++) {
-    std::cout << "\n";
-    for (int y = 0; y < image.size; y++) {
-      std::cout << image.Get(x, y) << " ";
-    }
-  }
-  std::cout << "\n";
-  std::cout << "\n";
-  for (int x=0;x<image.size;x++) {
-    std::cout << "\n";
-    for (int y = 0; y < image.size; y++) {
-      std::cout << areas->Get(x, y) << " ";
-    }
-  }
-  std::cout << "\n";
-  std::cout << "\n";
-  for (int x = 0; x < image.size; x++) {
-    std::cout << "\n";
-    for (int y = 0; y < image.size; y++) {
-      std::cout << areasOmp->Get(x, y) << " ";
-    }
-  }
-  */
   bool valid = CompareAreas(areas, areasOmp);
   ASSERT_TRUE(valid);
 }
