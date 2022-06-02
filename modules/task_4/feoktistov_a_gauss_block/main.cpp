@@ -39,7 +39,7 @@ TEST(GaussianFilterBlock, Test_Large_Image) {
   std::cout << "Time_Elapsed_SEQ: "<< elapsed_ms.count() << std::endl;
   start = std::chrono::steady_clock::now();
   std::vector<Pixel> rezp = parallelGauss(img, width, height, kernel);
-  finish = finish = std::chrono::steady_clock::now();
+  finish = std::chrono::steady_clock::now();
   elapsed_ms =
       std::chrono::duration_cast<std::chrono::milliseconds>(finish - start);
   std::cout << "Time_Elapsed_Parallel: " << elapsed_ms.count() << std::endl;
