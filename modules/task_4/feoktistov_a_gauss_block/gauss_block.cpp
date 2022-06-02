@@ -125,7 +125,7 @@ void ProcessPart(const std::vector<Pixel>& img, int width, int height,
                  const std::vector<int>& bounds,
                  const std::vector<float>& kernel,
                   std::vector<Pixel>* res) {
-  for (int i = 0; i < bounds.size(); i = i + 4) {
+  for (int i = 0; i < static_cast<int>(bounds.size()); i = i + 4) {
     for (int y = bounds[i + 1]; y < bounds[i + 3]; y++) {
       for (int x = bounds[i]; x < bounds[i + 2]; x++) {
         int pixelNumber = y * width + x;
